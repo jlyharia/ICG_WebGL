@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first Three.js app</title>
+		<style>
+			body {
+				margin: 0;
+			}
+			canvas {
+				width: 100%;
+				height: 100%
+			}
+		</style>
+	</head>
+	<body>
+		<script src="https://raw.githubusercontent.com/mrdoob/three.js/master/build/three.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="firstThree.js"></script>
+		<script>
+			var filePath = "shaders/squares.fs";
+			// var vShader = $.ajax("shaders/squares.fs");
+
+			// var vShader = $.get(filePath, function(data) {
+			//
+			// return data;
+			// });
+			// console.log(vShader);
+			// console.log(vShader.readyState);
+			// $(document).ready(function() {
+			// $("#div1").load(filePath);
+			// });
+			$.extend({
+				getValues : function(url) {
+					var result = null;
+					$.ajax({
+						url : url,
+						type : 'get',
+						dataType : 'text',
+						async : false,
+						success : function(data) {
+							result = data;
+						}
+					});
+					return result;
+				}
+			});
+			var results = $.getValues(filePath);
+			console.log(results);
+		</script>
+
+		<!-- <div id="div1">
+		<h2>Let jQuery AJAX Change This Text</h2>
+		</div> -->
+	</body>
+</html>

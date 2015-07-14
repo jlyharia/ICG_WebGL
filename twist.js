@@ -2,7 +2,7 @@
 
 var gl;
 var points = [];
-var NumTimesToSubdivide = 5;
+var NumTimesToSubdivide = 2;
 window.onload = function init() {
 	var canvas = document.getElementById("gl-canvas");
 
@@ -11,15 +11,9 @@ window.onload = function init() {
 		alert("WebGL isn't available");
 	}
 
+	var vertices = [vec2(-1, -1), vec2(1, -1), vec2(0, 1)];
+	divideTriangle(vertices[0], vertices[1], vertices[2], NumTimesToSubdivide);
 
-	var vertices = [
-		vec2(-1, -1),
-		vec2(1, -1),
-		vec2(0, 1)
-	];
-	divideTriangle(vertices[0], vertices[1], vertices[2],
-		NumTimesToSubdivide);
-	
 	twist(10);
 	// console.log(points)
 	//  Configure WebGL
@@ -47,24 +41,27 @@ window.onload = function init() {
 	render();
 };
 
-
 function render() {
 	gl.clear(gl.COLOR_BUFFER_BIT);
 	gl.drawArrays(gl.TRIANGLES, 0, points.length);
 	// gl.drawArrays(gl.LINES, 0, points.length);
 }
 
-// The new coordinates of a vertex  (x,y) are given by
-//
-// x′=xcosθ−ysinθ
-//
-// y′=xsinθ+ycosθ
-//rotate each triangle's vertices about the origin by θ degrees 
-function twist(angel){
-	// for (var i = 0; i < points.length; ++i) {
-// 		console.log(points[i])
-// 	}
-	
+/**
+ * 	The new coordinates of a vertex  (x,y) are given by
+ *
+ *  x′=xcosθ−ysinθ
+ *
+ *  y′=xsinθ+ycosθ
+ * rotate each triangle's vertices about the origin by θ degrees
+ *
+ * @param {Object} angel
+ */
+function twist(angel) {
+	for (var i = 0; i < points.length; ++i) {
+		console.log(points[i]);
+	}
+
 }
 
 function divideTriangle(a, b, c, count) {
@@ -80,7 +77,6 @@ function divideTriangle(a, b, c, count) {
 		var ab = mix(a, b, 0.5);
 		var ac = mix(a, c, 0.5);
 		var bc = mix(b, c, 0.5);
-
 		--count;
 
 		// three new triangles

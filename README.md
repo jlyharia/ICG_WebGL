@@ -1,10 +1,7 @@
 Interactive Computer Graphics with WebGL
 ----------------------------------------
 
-####Instructor
-Edward Angel
-
-
+###Information
 This command tells WebGL we want to supply data from a buffer.
 
 gl.vertexAttribPointer(
@@ -31,3 +28,5 @@ See
 3. https://open.gl/drawing  
 4. [javascript pointer](http://stackoverflow.com/a/10231963)
 5. [glMatrix](http://glmatrix.net/)
+6. [three.js](http://threejs.org/)
+http://www.cs.unm.edu/~angel/COURSERA/CODE/Common/
