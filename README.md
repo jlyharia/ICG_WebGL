@@ -1,4 +1,3 @@
-# ICG_WebGL
 Interactive Computer Graphics with WebGL
 ----------------------------------------
 
@@ -27,8 +26,8 @@ into smaller parts, each of which can be rendered independently
 
 See
 ---
-[course](https://class.coursera.org/webgl-001)
-http://webglfundamentals.org/webgl/lessons/webgl-how-it-works.html
-https://open.gl/drawing
-[javascript pointer](http://stackoverflow.com/a/10231963)
-[glMatrix](http://glmatrix.net/)
+1. [course](https://class.coursera.org/webgl-001)  
+2. http://webglfundamentals.org/webgl/lessons/webgl-how-it-works.html  
+3. https://open.gl/drawing  
+4. [javascript pointer](http://stackoverflow.com/a/10231963)
+5. [glMatrix](http://glmatrix.net/)
