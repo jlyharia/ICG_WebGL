@@ -27,7 +27,10 @@ window.onload = function init() {
 	// Load the data into the GPU
 
 	var bufferId = gl.createBuffer();
+	
 	gl.bindBuffer(gl.ARRAY_BUFFER, bufferId);
+	
+	//creates and initializes a buffer object's data store
 	gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
 	// Associate out shader variables with our data buffer

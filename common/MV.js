@@ -28,10 +28,10 @@ function vec2() {
 	var result = _argumentsToArray(arguments);
 	console.log(result)
 	switch (result.length) {
-		case 0:
-			result.push(0.0);
-		case 1:
-			result.push(0.0);
+	case 0:
+		result.push(0.0);
+	case 1:
+		result.push(0.0);
 	}
 
 	return result.splice(0, 2);
@@ -41,12 +41,12 @@ function vec3() {
 	var result = _argumentsToArray(arguments);
 
 	switch (result.length) {
-		case 0:
-			result.push(0.0);
-		case 1:
-			result.push(0.0);
-		case 2:
-			result.push(0.0);
+	case 0:
+		result.push(0.0);
+	case 1:
+		result.push(0.0);
+	case 2:
+		result.push(0.0);
 	}
 
 	return result.splice(0, 3);
@@ -56,14 +56,14 @@ function vec4() {
 	var result = _argumentsToArray(arguments);
 
 	switch (result.length) {
-		case 0:
-			result.push(0.0);
-		case 1:
-			result.push(0.0);
-		case 2:
-			result.push(0.0);
-		case 3:
-			result.push(1.0);
+	case 0:
+		result.push(0.0);
+	case 1:
+		result.push(0.0);
+	case 2:
+		result.push(0.0);
+	case 3:
+		result.push(1.0);
 	}
 
 	return result.splice(0, 4);
@@ -79,20 +79,17 @@ function mat2() {
 
 	var m = [];
 	switch (v.length) {
-		case 0:
-			v[0] = 1;
-		case 1:
-			m = [
-				vec2(v[0], 0.0),
-				vec2(0.0, v[0])
-			];
-			break;
+	case 0:
+		v[0] = 1;
+	case 1:
+		m = [vec2(v[0], 0.0), vec2(0.0, v[0])];
+		break;
 
-		default:
-			m.push(vec2(v));
-			v.splice(0, 2);
-			m.push(vec2(v));
-			break;
+	default:
+		m.push(vec2(v));
+		v.splice(0, 2);
+		m.push(vec2(v));
+		break;
 	}
 
 	m.matrix = true;
@@ -107,23 +104,19 @@ function mat3() {
 
 	var m = [];
 	switch (v.length) {
-		case 0:
-			v[0] = 1;
-		case 1:
-			m = [
-				vec3(v[0], 0.0, 0.0),
-				vec3(0.0, v[0], 0.0),
-				vec3(0.0, 0.0, v[0])
-			];
-			break;
+	case 0:
+		v[0] = 1;
+	case 1:
+		m = [vec3(v[0], 0.0, 0.0), vec3(0.0, v[0], 0.0), vec3(0.0, 0.0, v[0])];
+		break;
 
-		default:
-			m.push(vec3(v));
-			v.splice(0, 3);
-			m.push(vec3(v));
-			v.splice(0, 3);
-			m.push(vec3(v));
-			break;
+	default:
+		m.push(vec3(v));
+		v.splice(0, 3);
+		m.push(vec3(v));
+		v.splice(0, 3);
+		m.push(vec3(v));
+		break;
 	}
 
 	m.matrix = true;
@@ -138,26 +131,21 @@ function mat4() {
 
 	var m = [];
 	switch (v.length) {
-		case 0:
-			v[0] = 1;
-		case 1:
-			m = [
-				vec4(v[0], 0.0, 0.0, 0.0),
-				vec4(0.0, v[0], 0.0, 0.0),
-				vec4(0.0, 0.0, v[0], 0.0),
-				vec4(0.0, 0.0, 0.0, v[0])
-			];
-			break;
+	case 0:
+		v[0] = 1;
+	case 1:
+		m = [vec4(v[0], 0.0, 0.0, 0.0), vec4(0.0, v[0], 0.0, 0.0), vec4(0.0, 0.0, v[0], 0.0), vec4(0.0, 0.0, 0.0, v[0])];
+		break;
 
-		default:
-			m.push(vec4(v));
-			v.splice(0, 4);
-			m.push(vec4(v));
-			v.splice(0, 4);
-			m.push(vec4(v));
-			v.splice(0, 4);
-			m.push(vec4(v));
-			break;
+	default:
+		m.push(vec4(v));
+		v.splice(0, 4);
+		m.push(vec4(v));
+		v.splice(0, 4);
+		m.push(vec4(v));
+		v.splice(0, 4);
+		m.push(vec4(v));
+		break;
 	}
 
 	m.matrix = true;
@@ -244,14 +232,12 @@ function subtract(u, v) {
 
 	if (u.matrix && v.matrix) {
 		if (u.length != v.length) {
-			throw "subtract(): trying to subtract matrices" +
-				" of different dimensions";
+			throw "subtract(): trying to subtract matrices" + " of different dimensions";
 		}
 
 		for (var i = 0; i < u.length; ++i) {
 			if (u[i].length != v[i].length) {
-				throw "subtract(): trying to subtact matrices" +
-					" of different dimensions";
+				throw "subtract(): trying to subtact matrices" + " of different dimensions";
 			}
 			result.push([]);
 			for (var j = 0; j < u[i].length; ++j) {
@@ -358,12 +344,7 @@ function rotate(angle, axis) {
 	var omc = 1.0 - c;
 	var s = Math.sin(radians(angle));
 
-	var result = mat4(
-		vec4(x * x * omc + c, x * y * omc - z * s, x * z * omc + y * s, 0.0),
-		vec4(x * y * omc + z * s, y * y * omc + c, y * z * omc - x * s, 0.0),
-		vec4(x * z * omc - y * s, y * z * omc + x * s, z * z * omc + c, 0.0),
-		vec4()
-	);
+	var result = mat4(vec4(x * x * omc + c, x * y * omc - z * s, x * z * omc + y * s, 0.0), vec4(x * y * omc + z * s, y * y * omc + c, y * z * omc - x * s, 0.0), vec4(x * z * omc - y * s, y * z * omc + x * s, z * z * omc + c, 0.0), vec4());
 
 	return result;
 }
@@ -407,18 +388,16 @@ function lookAt(eye, at, up) {
 		return mat4();
 	}
 
-	var v = normalize(subtract(at, eye)); // view direction vector
-	var n = normalize(cross(v, up)); // perpendicular vector
-	var u = normalize(cross(n, v)); // "new" up vector
+	var v = normalize(subtract(at, eye));
+	// view direction vector
+	var n = normalize(cross(v, up));
+	// perpendicular vector
+	var u = normalize(cross(n, v));
+	// "new" up vector
 
 	v = negate(v);
 
-	var result = mat4(
-		vec4(n, -dot(n, eye)),
-		vec4(u, -dot(u, eye)),
-		vec4(v, -dot(v, eye)),
-		vec4()
-	);
+	var result = mat4(vec4(n, -dot(n, eye)), vec4(u, -dot(u, eye)), vec4(v, -dot(v, eye)), vec4());
 
 	return result;
 }
@@ -534,11 +513,7 @@ function cross(u, v) {
 		throw "cross(): second argument is not a vector of at least 3";
 	}
 
-	var result = [
-		u[1] * v[2] - u[2] * v[1],
-		u[2] * v[0] - u[0] * v[2],
-		u[0] * v[1] - u[1] * v[0]
-	];
+	var result = [u[1] * v[2] - u[2] * v[1], u[2] * v[0] - u[0] * v[2], u[0] * v[1] - u[1] * v[0]];
 
 	return result;
 }
@@ -576,7 +551,7 @@ function normalize(u, excludeLastComponent) {
 //----------------------------------------------------------------------------
 
 function mix(u, v, s) {
-	if (typeof s !== "number") {
+	if ( typeof s !== "number") {
 		throw "mix: the last paramter " + s + " must be a number";
 	}
 
@@ -649,10 +624,10 @@ function flatten(v) {
 //----------------------------------------------------------------------------
 
 var sizeof = {
-	'vec2': new Float32Array(flatten(vec2())).byteLength,
-	'vec3': new Float32Array(flatten(vec3())).byteLength,
-	'vec4': new Float32Array(flatten(vec4())).byteLength,
-	'mat2': new Float32Array(flatten(mat2())).byteLength,
-	'mat3': new Float32Array(flatten(mat3())).byteLength,
-	'mat4': new Float32Array(flatten(mat4())).byteLength
+	'vec2' : new Float32Array(flatten(vec2())).byteLength,
+	'vec3' : new Float32Array(flatten(vec3())).byteLength,
+	'vec4' : new Float32Array(flatten(vec4())).byteLength,
+	'mat2' : new Float32Array(flatten(mat2())).byteLength,
+	'mat3' : new Float32Array(flatten(mat3())).byteLength,
+	'mat4' : new Float32Array(flatten(mat4())).byteLength
 };

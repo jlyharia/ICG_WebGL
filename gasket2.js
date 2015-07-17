@@ -29,7 +29,7 @@ window.onload = function init() {
 
 	divideTriangle(vertices[0], vertices[1], vertices[2],
 		NumTimesToSubdivide);
-	console.log(points)
+	console.log(points);
 	//
 	//  Configure WebGL
 	//
